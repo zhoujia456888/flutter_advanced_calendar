@@ -13,17 +13,21 @@ class Header extends StatelessWidget {
     this.onPressed,
     this.dateStyle,
     this.todayStyle,
+    this.todayString = 'Today',
+    this.localeID = "en",
   }) : super(key: key);
 
-  static final _dateFormatter = DateFormat().add_yMMMM();
   final DateTime monthDate;
   final EdgeInsetsGeometry margin;
   final VoidCallback? onPressed;
   final TextStyle? dateStyle;
   final TextStyle? todayStyle;
+  final String todayString;
+  final String localeID;
 
   @override
   Widget build(BuildContext context) {
+    final dateFormatter = DateFormat.yMMMM(localeID);
     final theme = Theme.of(context);
 
     return Container(
@@ -32,7 +36,7 @@ class Header extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            _dateFormatter.format(monthDate),
+            dateFormatter.format(monthDate),
             style: dateStyle ?? theme.textTheme.titleMedium,
           ),
           InkWell(
@@ -46,7 +50,7 @@ class Header extends StatelessWidget {
                 vertical: 4.0,
               ),
               child: Text(
-                'Today',
+                todayString,
                 style: todayStyle ?? theme.textTheme.titleMedium,
               ),
             ),

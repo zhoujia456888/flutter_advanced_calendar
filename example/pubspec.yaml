@@ -12,6 +12,7 @@ dependencies:
 
   flutter_advanced_calendar:
     path: ../
+  intl: ^0.18.1
 
 flutter:
   uses-material-design: true

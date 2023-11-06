@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_calendar/flutter_advanced_calendar.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
+  initializeDateFormatting();
   runApp(const MyApp());
 }
 
@@ -14,8 +16,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final _calendarControllerToday = AdvancedCalendarController.today();
-  final _calendarControllerCustom =
-      AdvancedCalendarController(DateTime(2022, 10, 23));
+  final _calendarControllerCustom = AdvancedCalendarController(DateTime(2022, 10, 23));
   final events = <DateTime>[
     DateTime.now(),
     DateTime(2022, 10, 10),
@@ -40,6 +41,8 @@ class _MyAppState extends State<MyApp> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AdvancedCalendar(
+                localeID: "zh_CN",
+                todayString: "今天",
                 controller: _calendarControllerToday,
                 events: events,
                 startWeekDay: 1,
@@ -71,6 +74,8 @@ class _MyAppState extends State<MyApp> {
                   startWeekDay: 1,
                   innerDot: true,
                   keepLineSize: true,
+                  localeID: "zh_CN",
+                  todayString: "今天",
                   calendarTextStyle: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w400,
